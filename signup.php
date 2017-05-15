@@ -12,7 +12,7 @@
         <h2>Sign Up</h2>
     </header>
     <main>
-        <form id="regform" method="POST" onsubmit="return ValidateRegistration(this)">
+        <form action="__signup.php" id="regform" method="POST" onsubmit="return ValidateRegistration(this)">
             <div>
                 <label id="fnamelabel" for="fname"><h4>First Name</h4></label>
                 <label id="lnamelabel" for="lname"><h4>Last Name</h4></label>

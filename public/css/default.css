@@ -35,19 +35,18 @@ img[src="images/star.png"], th img[src="images/star.png"] {
 }
 
 header {
-	padding-top: 10px;
+	padding-top: 5px;
+    padding-bottom: 20px;
     position: relative;
     background-color: #007160;
     color: white;
 	text-align: center;
+    border-bottom: 5px solid grey;
 }
 
-    header h2 {
-        padding: 10px;
-        margin-top: 10px;
-        /*border-top: 3px solid white;*/
-        border-bottom: 5px solid grey;
-    }
+h2 {
+    text-align: center;
+}
 
 nav {
     min-height: 40px;
@@ -219,7 +218,7 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
 
 }
 
-#fnamelabel, #doblabel, #addresslabel, #postcodelabel, #pswdlabel, #doberror, #addresserror, #postcodeerror {
+#fnamelabel, #doblabel, #postcodelabel, #pswdlabel, #doberror, #addresserror, #postcodeerror {
     display: inline-block;
     width: 45%;
 }
@@ -238,12 +237,17 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
     -ms-wrap-flow: maximum;
 }
 
-#lname, #emailad, #ste, #corres, #cpswd {
+#lname, #ste, #corres, #cpswd {
 	border: 1px solid black;
     margin-left: 5%;
     display: inline-block;
     width: 45%;
     min-height: 45px;
+}
+
+#emailad, #password {
+	border: 1px solid black;
+    display: block;
 }
 
 #corres {
