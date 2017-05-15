@@ -1,4 +1,5 @@
 ﻿<?php require './includes/partials/header.php' ?>
+
         <h2>Home</h2>
         <p>
             This is our finsished product for Stage 1 of the project. Use the following links to navigate through the site, or alternatively,
