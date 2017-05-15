@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log In</title>
+    <meta charset="utf-8" />
+    <link href="css/default.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="shortcut icon" href="images/tree.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1>CAB230 Web Computing - Project</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="sample_results.html">Sample Results</a>
+            <a href="sample_individual_item.html">Sample Item</a>
+            <a href="registration.html">Sign Up</a>
+			<a href="login.html">Log In</a>
+        </nav>
+        <h2>Log On</h2>
+    </header>
+	
+    <main>
+	<!-- Need to make it so it checks with SQL Database entries and validates if the input matches the entry in databse -->
+		<form id="loginform" method="POST" onsubmit="return ValidLogin(this)">
+			<div id="logindiv">
+                <label id="addresslabel" for="email"><h4>Email Account</h4></label>
+				<input type="email" id="emailad" name="email" placeholder="email account" onchange="hideError('addresserror')" required>
+                <label id="pswdlabel" for="pwd"><h4>Password</h4></label>
+                <input type="password" id="pswd" name="pwd" placeholder="password" onchange="hideError('passworderror')" required>
+				<br/><br/>
+				 <input type="submit" id="submitb" value="Log In" onclick="hideError('signupfail')">
+				</div>
+				<div id="loginfail" class="error"></div>
+		</form>
+    </main>
+
+    <footer>
+        <div id="cal">Calum Oke (n9716751)</div>
+        <div id="doug">Douglas Kumar (n9714375)</div>
+    </footer>
+
+</body>
+
+</html>

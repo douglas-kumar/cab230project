@@ -1,8 +1,8 @@
-document.getElementById('regform').addEventListener("sumbmit", function (e) {
-    e.preventDefault(); // Prevents form from submitting
-    // TODO: Validate input then submit form if all is good
-    // document.getElementById("regform").submit();
-});
+/*document.getElementById('regform').addEventListener("submit", function (e) {
+	e.preventDefault(); // Prevents form from submitting
+	// TODO: Validate input then submit form if all is good
+	// document.getElementById("regform").submit();
+});*/
 
 function EnableSearchBtn() {
 	var textField = document.getElementById("searchtext").value;
@@ -30,7 +30,9 @@ function checkNames(form) {
 }
 
 function checkDob(form) {
-	var expr = /[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}/; // THIS DOESN'T WORK YET
+	var expr1 = /^([0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4})$/;
+
+	var expr = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
 
 	if (expr.test(form.dob.value)) {
 		return true;
@@ -90,10 +92,41 @@ function ValidateRegistration(form) {
 	}
 }
 
+// Function needs to be properly implemented
+function ValidLogin(form) {
+	if (checkAddress(form) && checkPassword(form)) {
+		window.alert("Logging in...");
+		return true;
+	} else {
+		document.getElementById("loginfail").innerHTML = "Log in failed, make sure your email address and password is correct";
+		return false;
+	}
+}
 
 function openReview() {
 	document.getElementById("reviewwrite").innerHTML = '<form><textarea rows="3" placeholder="Your review..."></textarea><br /><input type="submit" value="Post"></form>';
 	document.getElementById("writebutton").remove();
+}
+
+function myMap() {
+  var mapOptions1 = {
+    center: new google.maps.LatLng(51.508742,-0.120850),
+    zoom: 9 ,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var mapOptions2 = {
+    center: new google.maps.LatLng(-27.36,153.0387),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var mapOptions3 = {
+    center: new google.maps.LatLng(-27.3791,153.0387),
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
+  var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
+  var map3 = new google.maps.Map(document.getElementById("googleMap3"),mapOptions3);
 }
 
 //   Geo Location
@@ -104,6 +137,10 @@ function getLocation() {
 	} else {
 		document.getElementById("status").innerHTML = "Geolocation is not supported by this browser.";
 	}
+	/*var showMap = document.getElementById("googleMap1");
+	showMap.style.visibility = "visible";
+	showMap.style.width = "100%";
+	showMap.style.height = "400px";*/
 }
 
 function showPosition(position) {
