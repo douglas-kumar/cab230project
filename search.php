@@ -47,7 +47,7 @@
         <h4>Location</h4>
         <!-- CALUM: I need to fix the google maps to be real-time and add pins of map location -->
         <div class="searchitem" onclick="getLocation()">
-            <input id="location" type="button" onclick="window.location.href='sample_results.html'; alert('Searching for parks close by...')"
+            <input id="location" type="button" onclick="window.location.href='sample_results.php'; alert('Searching for parks close by...')"
                 value="Search for parks near you" />
             <!--alert('Searching for parks close by...')"-->
 
@@ -62,7 +62,7 @@
             <p id="status">Click the button to get your coordinates.</p>
         </div>
         <!-- CALUM: ^^^ -->
-        <input id="searchBtn" type="button" value="Search" disabled onclick="window.location.href='sample_results.html'" />
+        <input id="searchBtn" type="button" value="Search" disabled onclick="window.location.href='sample_results.php'" />
 
     </form>
 

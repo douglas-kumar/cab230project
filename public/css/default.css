@@ -218,7 +218,7 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
 
 }
 
-#fnamelabel, #doblabel, #postcodelabel, #pswdlabel, #doberror, #addresserror, #postcodeerror {
+#fnamelabel, #doblabel, #addresslabel, #postcodelabel, #pswdlabel, #doberror, #addresserror, #postcodeerror {
     display: inline-block;
     width: 45%;
 }
@@ -237,17 +237,12 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
     -ms-wrap-flow: maximum;
 }
 
-#lname, #ste, #corres, #cpswd {
+#lname, #emailad, #ste, #corres, #cpswd {
 	border: 1px solid black;
     margin-left: 5%;
     display: inline-block;
     width: 45%;
     min-height: 45px;
-}
-
-#emailad, #password {
-	border: 1px solid black;
-    display: block;
 }
 
 #corres {

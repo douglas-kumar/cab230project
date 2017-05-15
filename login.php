@@ -1,34 +1,18 @@
-<!DOCTYPE html>
-<html>
+<?php require './includes/partials/header.php' ?>
 
-<head>
-    <title>Log In</title>
-    <?php include 'headers.php' ?>
-</head>
+<h2>Log In</h2>
 
-<body>
-    <header>
-        <?php include 'navigation.php' ?>
-        <h2>Log In</h2>
-    </header>
-	
-    <main>
-	<!-- Need to make it so it checks with SQL Database entries and validates if the input matches the entry in databse -->
-		<form action="__login.php" id="loginform" method="POST" onsubmit="return ValidLogin(this)">
-			<div id="logindiv">
-                <label id="emailadlabel" for="email"><h4>Email</h4></label>
-				<input type="email" id="emailad" name="email" placeholder="123@example.com" onchange="hideError('addresserror')" required>
-                <br /><br />
-                <label id="passwordlabel" for="password"><h4>Password</h4></label>
-                <input type="password" id="password" name="password" placeholder="sfda" onchange="hideError('passworderror')" required>
-				<br/><br/>
-				 <input type="submit" id="submitb" value="Log In" onclick="hideError('signupfail')">
-			</div>
-			<div id="loginfail" class="error"></div>
-		</form>
-    </main>
+<!-- Need to make it so it checks with SQL Database entries and validates if the input matches the entry in databse -->
+<form action="__login.php" id="loginform" method="POST" onsubmit="return ValidLogin(this)">
+	<div id="logindiv">
+		<label id="fnamelabel" for="email"><h4>Email</h4></label>
+		<label id="cpswdlabel" for="password"><h4>Password</h4></label>
+		<input type="email" id="fname" name="email" placeholder="123@example.com" onchange="hideError('addresserror')" required>
+		<input type="password" id="cpswd" name="password" placeholder="Password" onchange="hideError('passworderror')" required>
+		<br/><br/>
+		<input type="submit" id="submitb" value="Log In" onclick="hideError('signupfail')">
+	</div>
+	<div id="loginfail" class="error"></div>
+</form>
 
-    <?php include 'footer.php' ?>
-</body>
-
-</html>
+<?php require './includes/partials/footer.php' ?>
