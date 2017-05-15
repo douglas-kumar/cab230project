@@ -25,7 +25,7 @@
 				<img src="images/star.png">
 				<img src="images/star.png">
 			</td>
-			<td><a href="sample_individual_item.php">7th Brigade Park</a></td>
+			<td><a href="park.php">7th Brigade Park</a></td>
 			<td>Lucious park in a small space</td>
 		</tr>
 		<tr>

@@ -9,18 +9,18 @@
 
         <h4>Name</h4>
         <div class="searchitem">
-            <input type="text" id="searchtext" name="searchname" oninput="EnableSearchBtn()" placeholder="Search by name..." />
+            <input type="text" id="searchtext" name="searchname" placeholder="Search by name..." />
         </div>
         <h4>Suburb</h4>
         <div class="searchitem">
-            <select name="suburb" onchange="EnableSearchBtn()">
+            <select name="suburb">
                 <option value="">Select suburb...</option>
                 <option value="sub1">Suburb 1</option>
                 <option value="sub2">Suburb 2</option>
             </select>
         </div>
         <h4>Minimum rating</h4>
-        <div class="searchitem" onchange="EnableSearchBtn()">
+        <div class="searchitem">
             <div>
                 <input type="radio" name="rating" value="5" />
                 <img src="images/star.png" />
@@ -47,7 +47,7 @@
         <h4>Location</h4>
         <!-- CALUM: I need to fix the google maps to be real-time and add pins of map location -->
         <div class="searchitem" onclick="getLocation()">
-            <input id="location" type="button" onclick="window.location.href='sample_results.php'; alert('Searching for parks close by...')"
+            <input id="location" type="button" onclick="window.location.href='results.php'; alert('Searching for parks close by...')"
                 value="Search for parks near you" />
             <!--alert('Searching for parks close by...')"-->
 
@@ -62,7 +62,7 @@
             <p id="status">Click the button to get your coordinates.</p>
         </div>
         <!-- CALUM: ^^^ -->
-        <input id="searchBtn" type="button" value="Search" disabled onclick="window.location.href='sample_results.php'" />
+        <input id="searchBtn" type="button" value="Search" onclick="window.location.href='results.php'" />
 
     </form>
 
