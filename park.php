@@ -2,14 +2,14 @@
 
 <h2 id="parktitle">7th Brigade Park</h2>
 <div id="parkrating">
-    <img src="images/star.png">
-    <img src="images/star.png">
-    <img src="images/star.png">
-    <img src="images/star.png">
+    <img src="public/images/star.png">
+    <img src="public/images/star.png">
+    <img src="public/images/star.png">
+    <img src="public/images/star.png">
 </div>
 
 <div class="parkcont">
-    <img class="parkimg" src="images/random_park.jpg"></img>
+    <img class="parkimg" src="public/images/random_park.jpg"></img>
     <div id="parkimgdesc">
         This is the 7th Brigade Park. It is a nice park with wide open spaces amongst other things. It has lot&#39s of green grass
         and many trees which provide shade to park visitors on sunny days. I could go on for ages about this park, but I
@@ -32,17 +32,17 @@
 
         <div class="review">
             <p>
-                <img src="images/star.png">
-                <img src="images/star.png">
-                <img src="images/star.png"> &nbspKatherine - <q>I love coming here every Sunday morning, 
+                <img src="public/images/star.png">
+                <img src="public/images/star.png">
+                <img src="public/images/star.png"> &nbspKatherine - <q>I love coming here every Sunday morning, 
                         beautiful park with plenty of shade and facilities.</q>
             </p>
             <p>
-                <img src="images/star.png">
-                <img src="images/star.png">
-                <img src="images/star.png">
-                <img src="images/star.png">
-                <img src="images/star.png"> &nbspDavid - <q>Great Park, prime spot for a barbecue or party
+                <img src="public/images/star.png">
+                <img src="public/images/star.png">
+                <img src="public/images/star.png">
+                <img src="public/images/star.png">
+                <img src="public/images/star.png"> &nbspDavid - <q>Great Park, prime spot for a barbecue or party
                         and the kids love it!</q>
             </p>
             <p>
