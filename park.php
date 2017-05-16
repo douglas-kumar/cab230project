@@ -1,6 +1,6 @@
-﻿<?php require './includes/partials/header.php' ?>
+﻿<?php require './includes/partials/header.inc' ?>
 
-<h2 id="parktitle">7TH BRIGADE PARK</h2>
+<h2 id="parktitle">7th Brigade Park</h2>
 <div id="parkrating">
     <img src="images/star.png">
     <img src="images/star.png">
@@ -74,4 +74,4 @@
     </div>
 </div>
 
-<?php require './includes/partials/footer.php' ?>
+<?php require './includes/partials/footer.inc' ?>

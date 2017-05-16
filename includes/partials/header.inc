@@ -6,10 +6,10 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <?php include 'references.php' ?>
+    <?php include 'references.inc' ?>
 </head>
 <body>
     <header>
-        <?php include 'navigation.php' ?>
+        <?php include 'navigation.inc' ?>
     </header>
     <main>

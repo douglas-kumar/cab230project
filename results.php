@@ -1,4 +1,4 @@
-﻿<?php require './includes/partials/header.php' ?>
+﻿<?php require './includes/partials/header.inc' ?>
 
 <h2>Search Results</h2>
 <!--<div id="googleMap1" hidden>
@@ -49,4 +49,4 @@
 	</table>
 </p>
 
-<?php require './includes/partials/footer.php' ?>
+<?php require './includes/partials/footer.inc' ?>

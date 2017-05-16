@@ -1,4 +1,4 @@
-<?php require './includes/partials/header.php' ?>
+<?php require './includes/partials/header.inc' ?>
 
 <h2>Log In</h2>
 
@@ -15,4 +15,4 @@
 	<div id="loginfail" class="error"></div>
 </form>
 
-<?php require './includes/partials/footer.php' ?>
+<?php require './includes/partials/footer.inc' ?>

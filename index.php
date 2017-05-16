@@ -1,4 +1,4 @@
-﻿<?php require './includes/partials/header.php' ?>
+﻿<?php require './includes/partials/header.inc' ?>
 
 <h2>Home</h2>
 <p>
@@ -23,4 +23,4 @@
 <div id="googleMap3" hidden>
 </div>
 
-<?php require './includes/partials/footer.php' ?>
+<?php require './includes/partials/footer.inc' ?>

@@ -1,4 +1,4 @@
-﻿<?php require './includes/partials/header.php' ?>
+﻿<?php require './includes/partials/header.inc' ?>
 
 <h2>Search</h2>
 <div id="wholeSearchField">
@@ -69,4 +69,4 @@
 </div>
 <!-- end of whole search field div -->
 
-<?php require './includes/partials/footer.php' ?>
+<?php require './includes/partials/footer.inc' ?>
