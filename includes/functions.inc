@@ -1,21 +1,18 @@
 <?php
-	
-	include 'init.php';
-	
-	function user_exists($emailAccount){
-		$emailAccount = sanitize($emailAccount);
-		$query = mysql_query("SELECT COUNT('id') FROM 'members' WHERE 'emailAccount' = '$emailAccount'");
-		
-		if (mysql_result($query, 0) == 1) {
-			return true;
-		} else {
-			return false;
-		}	
-	}
-	
-	function sanitize($data) {
-		return mysql_real_escape_string($data);
-	}
+//connect to db
+$connection = mysqli_connect("localhost", "root", "", "cab230_db");
 
+// check connection
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
+ 
+ 
+
+function get_park_name($name) {
+	global $connection;
+	$query = "SELECT name FROM items WHERE name = :name";
+	
+}
 
 ?>

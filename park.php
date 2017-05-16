@@ -1,6 +1,6 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 
-<h2 id="parktitle">7th Brigade Park</h2>
+<h2 id="parktitle">[Insert PHP code]</h2>
 <div id="parkrating">
     <img src="public/images/star.png">
     <img src="public/images/star.png">
@@ -8,22 +8,6 @@
     <img src="public/images/star.png">
 </div>
 
-<div class="parkcont">
-    <img class="parkimg" src="public/images/random_park.jpg"></img>
-    <div id="parkimgdesc">
-        This is the 7th Brigade Park. It is a nice park with wide open spaces amongst other things. It has lot&#39s of green grass
-        and many trees which provide shade to park visitors on sunny days. I could go on for ages about this park, but I
-        shall refrain and get back to html. This is the 7th Brigade Park. It is a nice park with wide open spaces amongst
-        other things. It has lot&#39s of green grass and many trees which provide shade to park visitors on sunny days. I
-        could go on for ages about this park, but I shall refrain and get back to html. This is the 7th Brigade Park. It
-        is a nice park with wide open spaces amongst other things. It has lot&#39s of green grass and many trees which provide
-        shade to park visitors on sunny days. I could go on for ages about this park, but I shall refrain and get back to
-        html. This is the 7th Brigade Park. It is a nice park with wide open spaces amongst other things. It has lot&#39s
-        of green grass and many trees which provide shade to park visitors on sunny days. I could go on for ages about this
-        park, but I shall refrain and get back to html.
-    </div>
-</div>
-<br />
 <div id="otherinfo">
     <div>
         <h4>
@@ -31,12 +15,6 @@
         </h4>
 
         <div class="review">
-            <p>
-                <img src="public/images/star.png">
-                <img src="public/images/star.png">
-                <img src="public/images/star.png"> &nbspKatherine - <q>I love coming here every Sunday morning, 
-                        beautiful park with plenty of shade and facilities.</q>
-            </p>
             <p>
                 <img src="public/images/star.png">
                 <img src="public/images/star.png">
@@ -48,18 +26,13 @@
             <p>
                 <input id="writebutton" type="button" value="Write a review" onclick="openReview()">
             </p>
-
+			<!-- Post openReview() call -->
             <div id="reviewwrite">
             </div>
+			
         </div>
     </div>
-    <div>
-        <h4>Events</h4>
 
-        <p>
-            An event...<br /> An event...<br /> An event...<br /> An event...<br />
-        </p>
-    </div>
     <div>
         <h4>Map</h4>
         <p>

@@ -1,4 +1,5 @@
 <?php 
+	require './includes/functions.inc';
     session_start();
 ?>
 
