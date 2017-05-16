@@ -8,12 +8,12 @@
 <p>
     <ul>
         <li><a href="search.php"><strong>Search</strong></a> - Search for parks around Brisbane</li><br />
-        <li><a href="results.php"><strong>Sample Results</strong></a> - View the results of your search criteria (sample)
+        <li><a href="results.php"><strong>Park List</strong></a> - See a filtered list of parks
         </li><br />
-        <li><a href="park.php"><strong>Sample Item</strong></a> - View one of the parks around Brisbane (sample)
+        <li><a href="park.php"><strong>View Park</strong></a> - View a park
         </li><br />
-        <li><a href="signup.php"><strong>Sign Up</strong></a> - Register yourself as a user of the site</li><br/>
-        <li><a href="login.php"><strong>Log In</strong></a> - Log in to the site</li>
+        <li><a <?php if (!isset($_SESSION['loggedIn'])) { ?>href="signup.php"<?php } ?>><strong>Sign Up</strong></a> - Register yourself as a user of the site</li><br/>
+        <li><a <?php if (!isset($_SESSION['loggedIn'])) { ?>href="login.php"<?php } ?>><strong>Log In</strong></a> - Log in to the site</li>
     </ul>
 </p>
 <div id="googleMap1" hidden>

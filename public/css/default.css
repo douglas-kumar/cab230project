@@ -64,6 +64,10 @@ nav {
         transition: background-color .2s ease-in-out, color .2s ease-in-out;
     }
 
+        /*nav a[href="./signup.php"], nav a[href="./login.php"], nav a[href="logout.php"] {
+            float: right;
+        }*/
+
     nav a:hover {
         color: #007160;
         background-color: white;

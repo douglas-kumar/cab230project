@@ -1,7 +1,7 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 
 <h2>Sign Up</h2>
-<form action="__signup.php" id="regform" method="POST" onsubmit="return ValidateRegistration(this)">
+<form action="./includes/scripts/signup.inc" id="regform" method="POST" onsubmit="return ValidateRegistration(this)">
     <div>
         <label id="fnamelabel" for="fname"><h4>First Name</h4></label>
         <label id="lnamelabel" for="lname"><h4>Last Name</h4></label>

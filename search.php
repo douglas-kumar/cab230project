@@ -4,7 +4,7 @@
 <div id="wholeSearchField">
     <!-- div to wrap the whole search field -->
 
-    <form method="GET" action="sample_results">
+    <form method="GET" action="./includes/scripts/search.inc">
         <!-- Need to fix (links to sample_results page) -->
 
         <h4>Name</h4>

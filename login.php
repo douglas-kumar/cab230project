@@ -3,7 +3,7 @@
 <h2>Log In</h2>
 
 <!-- Need to make it so it checks with SQL Database entries and validates if the input matches the entry in databse -->
-<form action="__login.php" id="loginform" method="POST" onsubmit="return ValidLogin(this)">
+<form action="./includes/scripts/login.inc" id="loginform" method="POST">
 	<div id="logindiv">
 		<label id="fnamelabel" for="email"><h4>Email</h4></label>
 		<label id="cpswdlabel" for="password"><h4>Password</h4></label>
