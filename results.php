@@ -20,27 +20,27 @@
 		</tr>
 		<tr>
 			<td>
-				<img src="images/star.png">
-				<img src="images/star.png">
-				<img src="images/star.png">
-				<img src="images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
 			</td>
 			<td><a href="park.php">7th Brigade Park</a></td>
 			<td>Lucious park in a small space</td>
 		</tr>
 		<tr>
 			<td>
-				<img src="images/star.png">
-				<img src="images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
 			</td>
 			<td>Sample Park 2</td>
 			<td>Small park containing a playground, perfect for kids!</td>
 		</tr>
 		<tr>
 			<td>
-				<img src="images/star.png">
-				<img src="images/star.png">
-				<img src="images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
+				<img src="public/images/star.png">
 			</td>
 			<td>Sample Park 3</td>
 			<td>Park with a beautiful stream next to it, perfect for swimming!</td>

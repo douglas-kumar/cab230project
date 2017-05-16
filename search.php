@@ -23,25 +23,25 @@
         <div class="searchitem">
             <div>
                 <input type="radio" name="rating" value="5" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" /><br />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" /><br />
                 <input type="radio" name="rating" value="4" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" /><br />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" /><br />
                 <input type="radio" name="rating" value="3" />
-                <img src="images/star.png" />
-                <img src="images/star.png" />
-                <img src="images/star.png" /><br />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" /><br />
                 <input type="radio" name="rating" value="2" />
-                <img src="images/star.png" />
-                <img src="images/star.png" /><br />
+                <img src="public/images/star.png" />
+                <img src="public/images/star.png" /><br />
                 <input type="radio" name="rating" value="1" />
-                <img src="images/star.png" /><br />
+                <img src="public/images/star.png" /><br />
             </div>
         </div>
         <h4>Location</h4>

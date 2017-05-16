@@ -24,12 +24,12 @@ input[type=button]:hover, input[type=submit]:hover {
     border: 1px solid grey;
 }
 
-.searchitem img[src="images/star.png"] {
+.searchitem img[src="public/images/star.png"] {
     width: 35px;
     height: 35px;
 }
 
-img[src="images/star.png"], th img[src="images/star.png"] {
+img[src="public/images/star.png"], th img[src="public/images/star.png"] {
     width: 15px;
     height: 15px;
 }
