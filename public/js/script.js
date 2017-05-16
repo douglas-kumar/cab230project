@@ -104,7 +104,7 @@ function ValidLogin(form) {
 }
 
 function openReview() {
-	document.getElementById("reviewwrite").innerHTML = '<form><textarea rows="3" placeholder="Your review..."></textarea><br /><input type="submit" value="Post"></form>';
+	document.getElementById("reviewwrite").innerHTML = '<form action="park.php" method="POST" name="review"><textarea rows="3" placeholder="Your review..."></textarea><br /><input type="submit" value="Post"></form>';
 	document.getElementById("writebutton").remove();
 }
 
