@@ -1,15 +1,16 @@
 ﻿<?php require './includes/partials/header.inc' ?>
+<?php require './includes/scripts/search.inc' ?>
 
 <h2>Search</h2>
 <div id="wholeSearchField">
     <!-- div to wrap the whole search field -->
 
-    <form method="GET" action="./includes/scripts/search.inc">
+    <form method="get" action="./includes/scripts/search.inc">
         <!-- Need to fix (links to sample_results page) -->
 
         <h4>Name</h4>
         <div class="searchitem">
-            <input type="text" id="searchtext" name="searchname" placeholder="Search by name..." />
+            <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
         </div>
         <h4>Suburb</h4>
         <div class="searchitem">
@@ -62,7 +63,7 @@
             <p id="status">Click the button to get your coordinates.</p>
         </div>
         <!-- CALUM: ^^^ -->
-        <input id="searchBtn" type="button" value="Search" onclick="window.location.href='results.php'" />
+        <input id="searchBtn" name="submit" type="submit" value="Search" />
 
     </form>
 

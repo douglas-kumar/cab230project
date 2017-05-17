@@ -1,6 +1,8 @@
 ﻿<?php require './includes/partials/header.inc' ?>
+<?php require './includes/scripts/post.inc' ?>
 
-<h2 id="parktitle">[Insert PHP code]</h2>
+<h2 id="parktitle"><?php echo "[PARK NAME]"; /*getParkName(x)*/ ?></h2>
+<form action="park.php" method="post">
 <div id="parkrating">
     <img src="public/images/star.png">
     <img src="public/images/star.png">
@@ -29,7 +31,6 @@
 			<!-- Post openReview() call -->
             <div id="reviewwrite">
             </div>
-			
         </div>
     </div>
 
@@ -46,5 +47,7 @@
         </p>
     </div>
 </div>
+
+</form>
 
 <?php require './includes/partials/footer.inc' ?>
