@@ -5,19 +5,49 @@
 <div id="wholeSearchField">
     <!-- div to wrap the whole search field -->
 
-    <form method="get" action="./includes/scripts/search.inc">
+    <form method="get" action="results.php">
         <!-- Need to fix (links to sample_results page) -->
-
+	
         <h4>Name</h4>
+		<!--need to insert proper thing - just code
+				-->
         <div class="searchitem">
             <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
+				<?php
+				global $errors;
+				global $database;
+				
+				$query = "SELECT DISTINCT name FROM items ORDER BY name";
+				$stmt = $database->prepare($query);
+				$stmt->execute();
+				
+				$names = $stmt->fetchAll();
+				
+				foreach ($names as $parkName) {
+					
+					echo "<li hidden><a href='results.php'>{$parkName['name']}<br /></a></li>"; // --> remove hidden tag when ready <--
+				}
+				?>
         </div>
+		
         <h4>Suburb</h4>
         <div class="searchitem">
             <select name="suburb">
-                <option value="">Select suburb...</option>
-                <option value="sub1">Suburb 1</option>
-                <option value="sub2">Suburb 2</option>
+                <option value="" disabled selected>Select suburb...</option>
+				<?php
+				global $errors;
+				global $database;
+				
+				$query = "SELECT DISTINCT suburb FROM items ORDER BY suburb";
+				$stmt = $database->prepare($query);
+				$stmt->execute();
+				
+				$suburbs = $stmt->fetchAll();
+				
+				foreach ($suburbs as $suburbName) {
+					echo "<option value={$suburbName['suburb']}>{$suburbName['suburb']}</option>";
+				}
+				?>
             </select>
         </div>
         <h4>Minimum rating</h4>
