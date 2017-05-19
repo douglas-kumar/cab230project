@@ -14,6 +14,15 @@
         <div class="searchitem">
             <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
 				<?php
+				global $database;
+				global $errors;
+				$query = "SELECT DISTINCT name FROM items ORDER BY name";
+				$searchInput = trim($_REQUEST['name']);
+				stmt = $database->prepare($query);
+				$stmt->execute();
+				
+				$names = $stmt->fetchAll();
+				/*
 				global $errors;
 				global $database;
 				
@@ -27,6 +36,7 @@
 					
 					echo "<li hidden><a href='results.php'>{$parkName['name']}<br /></a></li>"; // --> remove hidden tag when ready <--
 				}
+				*/
 				?>
         </div>
 		

@@ -27,11 +27,13 @@ function getParkName($park_name) {
 function validatePost($text) {
 	global $database;
 	global $errors;
+	date_default_timezone_set("Australia/Brisbane");
+
 	
 	$userId = 0;
 	$itemId = 0;
 	$rating = 1;
-	$dateTime = '2017-4-12 14:17:57';
+	$dateTime = date("Y-m-d H:i:s");
 	
 	$query = "INSERT INTO reviews (userId, itemId, rating, text, dateTime) VALUES (:userId, :itemId, :rating, :text, :dateTime)";
 	
