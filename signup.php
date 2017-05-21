@@ -1,28 +1,27 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 
 <h2>Sign Up</h2>
-<form action="./includes/scripts/signup.inc" id="regform" method="POST" onsubmit="return ValidateRegistration(this)">
+<form action="signup.php" id="regform" method="POST">
     <div>
         <label id="fnamelabel" for="fname"><h4>First Name</h4></label>
         <label id="lnamelabel" for="lname"><h4>Last Name</h4></label>
-        <input type="text" id="fname" name="firstname" placeholder="Your first name.." onchange="hideError('nameerror')" required>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name.." onchange="hideError('nameerror')" required><br
+        <input type="text" id="fname" name="firstname" placeholder="Your first name.." value="<?= $_POST['firstname'] ?? ''; ?>" onchange="hideError('nameerror')" required>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." value="<?= $_POST['lastname'] ?? ''; ?>" onchange="hideError('nameerror')" required><br
         /><br /><br />
 
         <div id="nameerror" class="error"></div>
 
         <label id="doblabel" for="dob"><h4>Date of Birth</h4></label>
         <label id="emaillabel" for="email"><h4>Email Address</h4></label>
-        <input type="date" id="dateofbirth" name="dob" onchange="hideError('doberror')" required>
-        <input type="email" id="emailad" name="email" placeholder="example123@sample.com" required><br /><br />
+        <input type="date" id="dateofbirth" name="dob" value="<?= $_POST['dob'] ?? ''; ?>" onchange="hideError('doberror')" required>
+        <input type="email" id="emailad" name="email" placeholder="example123@sample.com" value="<?= $_POST['email'] ?? ''; ?>" required><br /><br />
 
         <div id="doberror" class="error"></div>
         <div id="emailerror" class="error"></div>
 
         <label id="addresslabel" for="address"><h4>Address</h4></label>
         <label id="statelabel" for="state"><h4>State</h4></label>
-        <input id="addr" type="text" name="address" placeholder="e.g. 123 Streetroad Avenue" onchange="hideError('addresserror')"
-            required>
+        <input id="addr" type="text" name="address" placeholder="e.g. 123 Streetroad Avenue" value="<?= $_POST['address'] ?? ''; ?>" onchange="hideError('addresserror')" required>
         <select id="ste" name="state" onchange="hideError('stateerror')">
                     <option value="">Select state...</option>
                     <option value="qld">QLD</option>
