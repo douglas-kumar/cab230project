@@ -19,7 +19,6 @@
 
             if (login($email, $password)) {
                 $_SESSION['loggedIn'] = true;
-                $_SESSION['isAdmin'] = is_admin($userId['id']);
                 header("location: http://localhost/cab230project/index.php");
             } else {
                 print_r($errors);

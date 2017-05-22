@@ -2,7 +2,7 @@
 
 $errors = [];
 
-function errorMessages(&$errors, $message) {
+function error_messages(&$errors, $message) {
     array_push($errors, $message);
 }
 
@@ -38,6 +38,7 @@ function validateEmail($email) {
 }
 
 function validateAddress($address) {
+	global $errors;
 	$regex = '/[0-9]+\s[A-z]+/';
 	if (!preg_match($regex, $address)) {
 		error_messages($errors, "Invalid address entered");
@@ -45,12 +46,14 @@ function validateAddress($address) {
 }
 
 function validateState($state) {
+	global $errors;
 	if ($state == "") {
 		error_messages($errors, "No state selected");
 	}
 }
 
 function validatePostcode($postcode) {
+	global $errors;
 	$regex = '/^([0-9]{4})$/';
 	if (!preg_match($regex, $postcode)) {
 		error_messages($errors, "Invalid postcode entered");
@@ -58,6 +61,7 @@ function validatePostcode($postcode) {
 }
 
 function passwordsValid($pwd1, $pwd2) {
+	global $errors;
 	$len = strlen($pwd1);
 	if ($len < 8) {
 		error_messages($errors, "Password must be at least 8 characters long");
@@ -119,7 +123,7 @@ function validatePost($text) {
 
 function get_salt($email) {
     global $database;
-    $query = "SELECT salt FROM users WHERE email = :email";
+    $query = "SELECT salt FROM members WHERE email = :email";
     $stmt = $database->prepare($query);
 
     $stmt->bindParam(":email", $email);
@@ -128,6 +132,25 @@ function get_salt($email) {
 
     if ($stmt->rowCount() > 0) {
         return $stmt->fetch();
+    }
+}
+
+function login($email, $password) {
+    global $errors;
+    global $database;
+    $query = "SELECT 1 FROM members WHERE email = :email AND password = :password";
+    $stmt = $database->prepare($query);
+
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":password", $password);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        return true;
+    } else {
+        error_messages($errors, "Username and password combination is incorrect");
+        return false;
     }
 }
 

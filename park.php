@@ -26,7 +26,9 @@
                         and the kids love it!</q>
             </p>
             <p>
-                <input id="writebutton" type="button" value="Write a review" onclick="openReview()">
+                <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>
+                    <input id="writebutton" type="button" value="Write a review" onclick="openReview()">
+                <?php } ?>
             </p>
 			<!-- Post openReview() call -->
             <div id="reviewwrite">
