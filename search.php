@@ -18,7 +18,7 @@
 				global $errors;
 				$query = "SELECT DISTINCT name FROM items ORDER BY name";
 				$searchInput = trim($_REQUEST['name']);
-				stmt = $database->prepare($query);
+				$stmt = $database->prepare($query);
 				$stmt->execute();
 				
 				$names = $stmt->fetchAll();

@@ -1,4 +1,5 @@
 ﻿<?php require './includes/partials/header.inc' ?>
+<?php require "./includes/scripts/signup.inc"; ?>
 
 <h2>Sign Up</h2>
 <form action="signup.php" id="regform" method="POST">
@@ -39,7 +40,7 @@
 
         <label id="postcodelabel" for="postcode"><h4>Postcode</h4></label>
         <label id="corlabel" for="cor"><h4>Email correspondence</h4></label>
-        <input id="pc" name="postcode" type="text" placeholder="e.g. 4000" onchange="hideError('postcodeerror')" required>
+        <input id="pc" name="postcode" type="text" placeholder="e.g. 4000" value="<?= $_POST['postcode'] ?? ''; ?>" onchange="hideError('postcodeerror')" required>
         <div id="corres">
             <input type="checkbox" name="cor">Tick to receive news and other correspondence by email</input>
         </div><br /><br />
@@ -49,14 +50,14 @@
 
         <label id="pswdlabel" for="pwd"><h4>Password</h4></label>
         <label id="cpswdlabel" for="pwd"><h4>Confirm Password</h4></label>
-        <input type="password" id="pswd" name="pwd" placeholder="Password..." onchange="hideError('passworderror')" required>
-        <input type="password" id="cpswd" name="cpwd" placeholder="Confirm Password..." onchange="hideError('passworderror')" required><br
+        <input type="password" id="pswd" name="pwd" placeholder="Password..." value="<?= $_POST['pwd'] ?? ''; ?>" onchange="hideError('passworderror')" required>
+        <input type="password" id="cpswd" name="cpwd" placeholder="Confirm Password..." value="<?= $_POST['cpwd'] ?? ''; ?>" onchange="hideError('passworderror')" required><br
         /><br />
 
         <div id="passworderror" class="error"></div>
     </div>
 
-    <input type="submit" id="submitb" value="Sign Up" onclick="hideError('signupfail')">
+    <input type="submit" id="submitb" name="submit" value="Sign Up" onclick="hideError('signupfail')">
     <br />
     <div id="signupfail" class="error"></div>
 </form>

@@ -6,6 +6,67 @@ function errorMessages(&$errors, $message) {
     array_push($errors, $message);
 }
 
+function charOnly($str, $message) {
+    global $errors;
+    if (!preg_match('/^[a-zA-Z ]*$/', $str)) {
+        error_messages($errors, $message);
+    }
+}
+
+function validateName($name) {
+	global $errors;
+	$len = strlen($name);
+	if ($len < 2 || $len > 30) {
+		error_messages($errors, "Names must have at least 2, but no more than 30 characters");
+	}
+	charOnly($name, "Names must only contain letters");
+}
+
+function validateDob($dob) {
+	global $errors;
+	$regex = '/^(18|19|20)\d\d[-/](0[1-9]|1[012])[-/](0[1-9]|[12][0-9]|3[01])$/g';
+	if (!preg_match($regex, $dob)) {
+		error_messages($errors, "Invalid date of birth");
+	}
+}
+
+function validateEmail($email) {
+	global $errors;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        error_messages($errors, "Invalid email format");
+    }
+}
+
+function validateAddress($address) {
+	$regex = '/[0-9]+\s[A-z]+/';
+	if (!preg_match($regex, $address)) {
+		error_messages($errors, "Invalid address entered");
+	}
+}
+
+function validateState($state) {
+	if ($state == "") {
+		error_messages($errors, "No state selected");
+	}
+}
+
+function validatePostcode($postcode) {
+	$regex = '/^([0-9]{4})$/';
+	if (!preg_match($regex, $postcode)) {
+		error_messages($errors, "Invalid postcode entered");
+	}
+}
+
+function passwordsValid($pwd1, $pwd2) {
+	$len = strlen($pwd1);
+	if ($len < 8) {
+		error_messages($errors, "Password must be at least 8 characters long");
+	}
+	if ($pwd1 != $pwd2) {
+		error_messages($errors, "Passwords do not match");
+	}
+}
+
 function getParkName($park_name) {
 	global $errors;
 	global $database;
@@ -54,6 +115,20 @@ function validatePost($text) {
 		return false;
 	}
 	
+}
+
+function get_salt($email) {
+    global $database;
+    $query = "SELECT salt FROM users WHERE email = :email";
+    $stmt = $database->prepare($query);
+
+    $stmt->bindParam(":email", $email);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        return $stmt->fetch();
+    }
 }
 
 function enforceLogin() {
