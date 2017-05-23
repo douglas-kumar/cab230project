@@ -100,7 +100,7 @@ function getParkName($park_name) {
 	if ($stmt->rowCount() > 0) {
 			return $stmt->fetch();
 	} else {
-			return $errorMessages($errors, "Invalid park name");
+			return $error_messages($errors, "Invalid park name");
 	}
 	
 }
@@ -111,16 +111,17 @@ function validatePost($text) {
 	date_default_timezone_set("Australia/Brisbane");
 
 	
-	$userId = 0;
+	$memberId = 6;
 	$itemId = 0;
-	$rating = 1;
+	$rating = 3;
 	$dateTime = date("Y-m-d H:i:s");
 	
-	$query = "INSERT INTO reviews (userId, itemId, rating, text, dateTime) VALUES (:userId, :itemId, :rating, :text, :dateTime)";
+	//Change to INSERT INTO
+	$query = "REPLACE reviews (memberId, itemId, rating, text, dateTime) VALUES (:memberId, :itemId, :rating, :text, :dateTime)";
 	
 	$stmt = $database->prepare($query);
 				
-	$stmt->bindParam(':userId', $userId);
+	$stmt->bindParam(':memberId', $memberId);
 	$stmt->bindParam(':itemId', $itemId);
 	$stmt->bindParam(':rating', $rating);
 	$stmt->bindParam(':text', $text);
@@ -131,7 +132,7 @@ function validatePost($text) {
 	if ($stmt->rowCount() > 0) {
 		return true;
     } else {
-		errorMessages($errors, "Cannot validate review, please make sure it's under 100 characters and not empty");
+		error_messages($errors, "Cannot validate review, please make sure it's under 100 characters and not empty");
 		return false;
 	}
 	
@@ -149,6 +150,73 @@ function get_salt($email) {
     if ($stmt->rowCount() > 0) {
         return $stmt->fetch();
     }
+}
+
+function getReviews() {
+	global $database;
+	global $errors;
+	
+	$query = "SELECT * FROM reviews; //M.firstName, R.* FROM reviews AS R INNER JOIN members AS M ON M.id = R.memberId";
+	$stmt = $database->prepare($query);
+	$stmt->execute();
+	
+	if ($stmt->rowCount() > 0) {
+		return $stmt->fetchAll();
+	} else {
+		error_messages($errors, "Cannot find park reviews");
+		return false;
+	}
+	
+}
+
+function getMembersName($memberId) {
+	global $database;
+	global $errors;
+	
+	$query = "SELECT * FROM members WHERE id = :id";
+	$stmt = $database->prepare($query);
+	$stmt->bindParam('id', $memberId);
+	$stmt->execute();
+	$memberName = $stmt->fetchAll();
+	
+	if ($stmt->rowCount() > 0) {
+		return $memberName['firstName'];
+	} else {
+		error_messages($errors, "Cannot find park reviews");
+		return false;
+	}
+}
+
+function getFirstName() {
+	global $database;
+	global $errors;
+	
+	$query = "SELECT firstName FROM members";
+	$stmt = $database->prepare($query);
+	$stmt->execute();
+	
+	if ($stmt->rowCount() > 0) {
+		return $stmt->fetch();
+	} else {
+		error_messages($errors, "Cannot find park reviews");
+		return false;
+	}
+}
+
+function getMemberId() {
+	global $database;
+	global $errors;
+	
+	$query = "SELECT id FROM members";
+	$stmt = $database->prepare($query);
+	$stmt->execute();
+	
+	if ($stmt->rowCount() > 0) {
+		return $stmt->fetch();
+	} else {
+		error_messages($errors, "Cannot find member id");
+		return false;
+	}
 }
 
 function login($email, $password) {
