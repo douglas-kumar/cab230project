@@ -13,14 +13,18 @@
 			$address = $_POST['address'];
 			$state = $_POST['state'];
 			$postcode = $_POST['postcode'];
-			$cor = $_POST['cor'];
+            if (isset($_POST['cor']) && $_POST['cor'] == on) {
+			    $cor = 1;
+            } else {
+                $cor = 0;
+            }
             $password = $_POST['pwd'];
 			$confPassword = $_POST['cpwd'];
 
             // Validate user input
             validateName($firstname);
 			validateName($lastname);
-			//validateDob($dob);
+			validateDob($dob);
             validateEmail($email);
 			validateAddress($address);
 			validateState($state);

@@ -24,7 +24,7 @@ function validateName($name) {
 
 function validateDob($dob) {
 	global $errors;
-	$regex = '/^(19|20)\d\d[-/](0[1-9]|1[012])[-/](0[1-9]|[12][0-9]|3[01])$/';
+	$regex = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
 	if (!preg_match($regex, $dob)) {
 		error_messages($errors, "Invalid date of birth");
 	}
