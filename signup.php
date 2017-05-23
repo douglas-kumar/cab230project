@@ -1,6 +1,12 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 <?php require "./includes/scripts/signup.inc"; ?>
 
+<?php 
+    if (isset($_POST['state'])) {
+        $state = $_POST['state'];
+    }
+?>
+
 <h2>Sign Up</h2>
 <form action="signup.php" id="regform" method="POST">
     <div>
@@ -23,16 +29,16 @@
         <label id="addresslabel" for="address"><h4>Address</h4></label>
         <label id="statelabel" for="state"><h4>State</h4></label>
         <input id="addr" type="text" name="address" placeholder="e.g. 123 Streetroad Avenue" value="<?= $_POST['address'] ?? ''; ?>" onchange="hideError('addresserror')" required>
-        <select id="ste" name="state" selected="<?= $_POST['state'] ?? ''; ?>" onchange="hideError('stateerror')">
+        <select id="ste" name="state" value="<?= $_POST['state']; ?>" onchange="hideError('stateerror')">
                     <option value="">Select state...</option>
-                    <option value="qld">QLD</option>
-                    <option value="nsw">NSW</option>
-                    <option value="act">ACT</option>
-                    <option value="vic">VIC</option>
-                    <option value="tas">TAS</option>
-                    <option value="sa">SA</option>
-                    <option value="wa">WA</option>
-                    <option value="nt">NT</option>
+                    <option value="qld" <?= (isset($state) && $state=="qld") ? "selected" : ''; ?>>QLD</option>
+                    <option value="nsw" <?= (isset($state) && $state=="nsw") ? "selected" : ''; ?>>NSW</option>
+                    <option value="act" <?= (isset($state) && $state=="act") ? "selected" : ''; ?>>ACT</option>
+                    <option value="vic" <?= (isset($state) && $state=="vic") ? "selected" : ''; ?>>VIC</option>
+                    <option value="tas" <?= (isset($state) && $state=="tas") ? "selected" : ''; ?>>TAS</option>
+                    <option value="sa" <?= (isset($state) && $state=="sa") ? "selected" : ''; ?>>SA</option>
+                    <option value="wa" <?= (isset($state) && $state=="wa") ? "selected" : ''; ?>>WA</option>
+                    <option value="nt" <?= (isset($state) && $state=="nt") ? "selected" : ''; ?>>NT</option>
                 </select><br /><br />
 
         <div id="addresserror" class="error"></div>
@@ -42,7 +48,7 @@
         <label id="corlabel" for="cor"><h4>Email correspondence</h4></label>
         <input id="pc" name="postcode" type="text" placeholder="e.g. 4000" value="<?= $_POST['postcode'] ?? ''; ?>" onchange="hideError('postcodeerror')" required>
         <div id="corres">
-            <input type="checkbox" name="cor">Tick to receive news and other correspondence by email</input>
+            <input type="checkbox" name="cor" <?= isset($_POST['cor']) ? "checked" : ''; ?>>Tick to receive news and other correspondence by email</input>
         </div><br /><br />
 
         <div id="postcodeerror" class="error"></div>

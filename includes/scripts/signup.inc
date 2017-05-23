@@ -13,7 +13,7 @@
 			$address = $_POST['address'];
 			$state = $_POST['state'];
 			$postcode = $_POST['postcode'];
-			//$cor = $_POST['cor'];
+			$cor = $_POST['cor'];
             $password = $_POST['pwd'];
 			$confPassword = $_POST['cpwd'];
 
@@ -37,8 +37,8 @@
                 $password =  sha1($password . $salt);
 
                 // Create and prepare query
-                $query = "INSERT INTO members (firstName, lastName, email, address, state, postcode, password, salt)
-                VALUES (:firstname, :lastname, :email, :address, :state, :postcode, :password, :salt)";
+                $query = "INSERT INTO members (firstName, lastName, DOB, email, address, state, postcode, correspondence, password, salt)
+                VALUES (:firstname, :lastname, :dob, :email, :address, :state, :postcode, :correspondence, :password, :salt)";
 
                 // Prepare the statement to prevent SQL injections
                 $stmt = $database->prepare($query);
@@ -46,12 +46,12 @@
                 // Bind parameters
                 $stmt->bindParam(':firstname', $firstname);
                 $stmt->bindParam(':lastname', $lastname);
-				//$stmt->bindParam(':dob', $dob);
+				$stmt->bindParam(':dob', $dob);
                 $stmt->bindParam(':email', $email);
 				$stmt->bindParam(':address', $address);
 				$stmt->bindParam(':state', $state);
 				$stmt->bindParam(':postcode', $postcode);
-				//$stmt->bindParam(':correspondence', $correspondence);
+				$stmt->bindParam(':correspondence', $cor);
                 $stmt->bindParam(':password', ($password));
                 $stmt->bindParam(':salt', $salt);
 
