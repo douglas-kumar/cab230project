@@ -22,7 +22,7 @@
 				$stmt->execute();
 				
 				$names = $stmt->fetchAll();
-				/*
+				
 				global $errors;
 				global $database;
 				
