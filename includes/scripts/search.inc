@@ -1,4 +1,4 @@
-<?php 
+<?php
 global $errors;
 	if (isset($_GET['submit'])) {
 		global $database;
@@ -18,4 +18,8 @@ global $errors;
 		}
 		
 	}
+?>
+
+<?php
+
 ?>

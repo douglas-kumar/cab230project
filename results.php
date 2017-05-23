@@ -1,4 +1,5 @@
 ﻿<?php require './includes/partials/header.inc' ?>
+<?php require './includes/scripts/results.inc' ?>
 
 <h2>Search Results</h2>
 <!--<div id="googleMap1" hidden>

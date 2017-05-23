@@ -5,7 +5,7 @@
 <div id="wholeSearchField">
     <!-- div to wrap the whole search field -->
 
-    <form method="get" action="results.php">
+    <form method="POST" action="results.php">
         <!-- Need to fix (links to sample_results page) -->
 	
         <h4>Name</h4>
@@ -13,7 +13,7 @@
 				-->
         <div class="searchitem">
             <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
-				<?php
+				<?php/*
 				global $database;
 				global $errors;
 				$query = "SELECT DISTINCT name FROM items ORDER BY name";
