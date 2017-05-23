@@ -30,7 +30,7 @@
         <label id="statelabel" for="state"><h4>State</h4></label>
         <input id="addr" type="text" name="address" placeholder="e.g. 123 Streetroad Avenue" value="<?= $_POST['address'] ?? ''; ?>" onchange="hideError('addresserror')" required>
         <select id="ste" name="state" value="<?= $_POST['state']; ?>" onchange="hideError('stateerror')">
-                    <option value="">Select state...</option>
+                    <option value="" disabled selected>Select state...</option>
                     <option value="qld" <?= (isset($state) && $state=="qld") ? "selected" : ''; ?>>QLD</option>
                     <option value="nsw" <?= (isset($state) && $state=="nsw") ? "selected" : ''; ?>>NSW</option>
                     <option value="act" <?= (isset($state) && $state=="act") ? "selected" : ''; ?>>ACT</option>
