@@ -4,18 +4,28 @@
         global $errors;
         global $database;
 
-        $query = "items";
+        // Construct a query based on search parameters provided
 
         try {
 
-            if () {
+            if (isset($_POST['name']) && isset($_POST['suburb']) && isset($_POST['rating'])) {
 
-            } else if () {
+                $query = "";
 
-            } else if () {
+            } else if (isset($_POST['name']) && isset($_POST['suburb'])) {
+
+            } else if (isset($_POST['name']) && isset($_POST['rating'])) {
+
+            } else if (isset($_POST['suburb']) && isset($_POST['rating'])) {
+                
+            } else if (isset($_POST['name])) {
+
+            } else if (isset($_POST['suburb'])) {
+
+            } else if (isset($_POST['rating'])) {
 
             } else {
-                
+
             }
 
             //Collect search criteria
