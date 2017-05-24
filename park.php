@@ -1,7 +1,7 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 <?php require './includes/scripts/post.inc' ?>
-
-<h2 id="parktitle"><?php echo "*INSERT PARK NAME*"; ?></h2>
+<?php $_SESSION['itemId'] = $_GET['itemId']; ?>
+<h2 id="parktitle"><?php echo "{$_GET['itemId']}"; ?></h2>
 <form action="park.php" method="post">
 <div id="parkrating">
     <img src="public/images/star.png">

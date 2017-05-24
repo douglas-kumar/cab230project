@@ -112,10 +112,9 @@ function validatePost($text, $rating) {
 
 	
 	$memberId = $_SESSION['user'];
-	$itemId = 1;//$_GET['itemId'];
+	$itemId = $_SESSION['itemId'];
 	$dateTime = date("Y-m-d H:i:s");
 	
-	//Change to INSERT INTO
 	$query = "REPLACE reviews (memberId, itemId, rating, text, dateTime) VALUES (:memberId, :itemId, :rating, :text, :dateTime)";
 	
 	$stmt = $database->prepare($query);
@@ -155,8 +154,8 @@ function getReviews() {
 	global $database;
 	global $errors;
 	
-	//$itemId = $_GET['itemId'];
-	$itemId = 1;
+	$itemId = $_GET['itemId'];
+	//$itemId = 1;
 						
 	$query = "SELECT  M.firstName, R.rating, R.text, R.dateTime FROM reviews AS R INNER JOIN members AS M ON R.memberId = M.id WHERE itemId = :itemId";
 	$stmt = $database->prepare($query);

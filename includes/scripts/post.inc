@@ -6,7 +6,7 @@
 
 		try {
 			$memberId = $_SESSION['user'];
-			$itemId = 1;//$_GET['itemId'];
+			$itemId = $_SESSION['itemId'];
 			$dateTime = date("Y-m-d H:i:s");
 			$rating = $_POST['rating'];
 			$text = $_POST['text'];
