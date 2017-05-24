@@ -1,7 +1,7 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 <?php require './includes/scripts/post.inc' ?>
 
-<h2 id="parktitle"><?php echo "[PARK NAME]"; /*getParkName(x)*/ ?></h2>
+<h2 id="parktitle"><?php echo "*INSERT PARK NAME*"; ?></h2>
 <form action="park.php" method="post">
 <div id="parkrating">
     <img src="public/images/star.png">
@@ -18,12 +18,50 @@
 
         <div class="review">
             <p>
+			<!-- REMOVE - Sample review
                 <img src="public/images/star.png">
                 <img src="public/images/star.png">
                 <img src="public/images/star.png">
                 <img src="public/images/star.png">
                 <img src="public/images/star.png"> &nbspDavid - <q>Great Park, prime spot for a barbecue or party
                         and the kids love it!</q>
+						<br /><br /><br />
+						-->
+						<?php
+						global $database;
+						global $errors;
+						$reviews = getReviews();
+						
+						echo "<p>";
+						if ($reviews != null) {
+							foreach ($reviews as $review) {
+								if ($review['rating'] == 1) { ?>
+									<img src="public/images/star.png">
+								<?php } else if ($review['rating'] == 2) { ?>
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+								<?php } else if ($review['rating'] == 3) { ?>
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+								<?php } else if ($review['rating'] == 4) { ?>
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+								<?php } else { ?>
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+									<img src="public/images/star.png">
+							    <?php	}
+								echo "{$review['firstName']}" . " - " . "<q>{$review['text']}</q> " . "</p>";
+							}
+						} else {
+							echo "<br />no reviews have been written";
+						}
+						?>
             </p>
             <p>
                 <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) { ?>

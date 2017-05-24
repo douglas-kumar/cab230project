@@ -8,7 +8,7 @@
             $results = get_salt($email);
             $password = sha1($password . $results['salt']);
 
-            $query = "SELECT id FROM members WHERE email = :email";
+            $query = "SELECT id, firstName FROM members WHERE email = :email";
             $stmt = $database->prepare($query);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
@@ -20,6 +20,7 @@
             if (login($email, $password)) {
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['user'] = $userId['id'];
+				$_SESSION['userName'] = $userId['firstName'];
                 header("location: http://localhost/cab230project/index.php");
             } else {
                 print_r($errors);

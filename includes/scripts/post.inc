@@ -5,15 +5,15 @@
 		date_default_timezone_set("Australia/Brisbane");
 
 		try {
-			$userId = 0;
-			$itemId = 0;
-			$rating = 1;
+			$memberId = $_SESSION['user'];
+			$itemId = 1;//$_GET['itemId'];
+			$dateTime = date("Y-m-d H:i:s");
+			$rating = $_POST['rating'];
 			$text = $_POST['text'];
-			$dateTime = date("Y-m-d H:i:sa");
 			
-			if (validatePost($text)) {
+			if (validatePost($text, $rating) == true) {
 				// Get newly created account ID
-                $reviewId = $database->lastInsertId();
+             //  $reviewId = $database->lastInsertId();
                 // Redirect to index.php
 				header("location: http://localhost/cab230project/index.php");
 			} else {

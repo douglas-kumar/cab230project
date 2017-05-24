@@ -173,6 +173,14 @@ table td {
     font-size: 12px;
 }
 
+#reviewwrite input[type=range] {
+	width: 100%;
+	border: 1px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 #parkmap {
     width: 95%;
     height: 225px;
@@ -258,6 +266,12 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
 input[type=radio] {
     border: 0px;
     width: 20px;
+    height: 20px;
+}
+
+input[type=range] {
+	border: 1px;
+	width: 20px;
     height: 20px;
 }
 
