@@ -87,22 +87,21 @@ function passwordsValid($pwd1, $pwd2) {
 	}
 }
 
-function getParkName($park_name) {
+function getPark($itemId) {
 	global $errors;
 	global $database;
-	$query = "SELECT name FROM items WHERE name = :name";
+	$query = "SELECT * FROM items WHERE id = :id";
 	
 	$stmt = $database->prepare($query);
 	
-	$stmt->bindParam(":name", $park_name);
+	$stmt->bindParam(':id', $itemId);
 	$stmt->execute();
 	
 	if ($stmt->rowCount() > 0) {
 			return $stmt->fetch();
 	} else {
 			return $error_messages($errors, "Invalid park name");
-	}
-	
+	}	
 }
 
 function validatePost($text, $rating) {
@@ -155,7 +154,6 @@ function getReviews() {
 	global $errors;
 	
 	$itemId = $_GET['itemId'];
-	//$itemId = 1;
 						
 	$query = "SELECT  M.firstName, R.rating, R.text, R.dateTime FROM reviews AS R INNER JOIN members AS M ON R.memberId = M.id WHERE itemId = :itemId";
 	$stmt = $database->prepare($query);
