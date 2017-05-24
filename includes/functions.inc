@@ -87,22 +87,21 @@ function passwordsValid($pwd1, $pwd2) {
 	}
 }
 
-function getParkName($park_name) {
+function getPark($itemId) {
 	global $errors;
 	global $database;
-	$query = "SELECT name FROM items WHERE name = :name";
+	$query = "SELECT * FROM items WHERE id = :id";
 	
 	$stmt = $database->prepare($query);
 	
-	$stmt->bindParam(":name", $park_name);
+	$stmt->bindParam(':id', $itemId);
 	$stmt->execute();
 	
 	if ($stmt->rowCount() > 0) {
 			return $stmt->fetch();
 	} else {
 			return $error_messages($errors, "Invalid park name");
-	}
-	
+	}	
 }
 
 function validatePost($text, $rating) {
@@ -112,10 +111,9 @@ function validatePost($text, $rating) {
 
 	
 	$memberId = $_SESSION['user'];
-	$itemId = 1;//$_GET['itemId'];
+	$itemId = $_SESSION['itemId'];
 	$dateTime = date("Y-m-d H:i:s");
 	
-	//Change to INSERT INTO
 	$query = "REPLACE reviews (memberId, itemId, rating, text, dateTime) VALUES (:memberId, :itemId, :rating, :text, :dateTime)";
 	
 	$stmt = $database->prepare($query);
@@ -155,8 +153,7 @@ function getReviews() {
 	global $database;
 	global $errors;
 	
-	//$itemId = $_GET['itemId'];
-	$itemId = 1;
+	$itemId = $_GET['itemId'];
 						
 	$query = "SELECT  M.firstName, R.rating, R.text, R.dateTime FROM reviews AS R INNER JOIN members AS M ON R.memberId = M.id WHERE itemId = :itemId";
 	$stmt = $database->prepare($query);
