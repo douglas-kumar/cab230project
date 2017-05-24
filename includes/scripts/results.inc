@@ -17,6 +17,17 @@
                 $rating = $_POST['rating'];
             }
 
+            $query1 = "SELECT * FROM items WHERE suburb = :suburb";
+            $stmt = $database->prepare($query1);
+            $stmt->bindParams(":suburb", $suburb);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $results = $stmt->fetchAll();
+            } else {
+                $results = 0;
+            }
+
         } catch (PDOException $e) {
             die($e->getMessage());
         }

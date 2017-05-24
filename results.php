@@ -17,7 +17,6 @@
 		<tr>
 			<th>Rating</th>
 			<th>Name</th>
-			<th>Features</th>
 		</tr>
 		<tr>
 			<td>
@@ -27,7 +26,6 @@
 				<img src="public/images/star.png">
 			</td>
 			<td><a href="park.php">7th Brigade Park</a></td>
-			<td>Lucious park in a small space</td>
 		</tr>
 		<tr>
 			<td>
@@ -35,7 +33,6 @@
 				<img src="public/images/star.png">
 			</td>
 			<td>Sample Park 2</td>
-			<td>Small park containing a playground, perfect for kids!</td>
 		</tr>
 		<tr>
 			<td>
@@ -44,8 +41,22 @@
 				<img src="public/images/star.png">
 			</td>
 			<td>Sample Park 3</td>
-			<td>Park with a beautiful stream next to it, perfect for swimming!</td>
 		</tr>
+		<tr></tr>
+
+		<?php
+			if ($results != 0) {
+				foreach($results as $result) {
+					echo "<tr><td>";
+					for ($i = 0; $i < 2; $i++) {
+						echo "<img src=\"public/images/star.png\">";
+					}
+					echo "</td><td><a href=\"park.php?itemId={$result['id']}\">{$result['name']}</a></td>";
+				}
+			} else {
+				echo "<tr><td>No items matched your search.</td></tr>";
+			}
+		?>
 
 	</table>
 </p>
