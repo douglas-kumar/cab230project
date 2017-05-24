@@ -13,31 +13,6 @@
 				-->
         <div class="searchitem">
             <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
-				<?php/*
-				global $database;
-				global $errors;
-				$query = "SELECT DISTINCT name FROM items ORDER BY name";
-				//$searchInput = trim($_REQUEST['name']);
-				$stmt = $database->prepare($query);
-				$stmt->execute();
-				
-				$names = $stmt->fetchAll();
-				
-				global $errors;
-				global $database;
-				
-				$query = "SELECT DISTINCT name FROM items ORDER BY name";
-				$stmt = $database->prepare($query);
-				$stmt->execute();
-				
-				$names = $stmt->fetchAll();
-				
-				foreach ($names as $parkName) {
-					
-					echo "<li hidden><a href='results.php'>{$parkName['name']}<br /></a></li>"; // --> remove hidden tag when ready <--
-				}
-				*/
-				?>
         </div>
 		
         <h4>Suburb</h4>
@@ -55,7 +30,7 @@
 				$suburbs = $stmt->fetchAll();
 				
 				foreach ($suburbs as $suburbName) {
-					echo "<option value={$suburbName['suburb']}>{$suburbName['suburb']}</option>";
+					echo "<option value=\"{$suburbName['suburb']}\">{$suburbName['suburb']}</option>";
 				}
 				?>
             </select>

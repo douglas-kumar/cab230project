@@ -12,6 +12,7 @@
             }
             if (isset($_POST['suburb'])) {
                 $suburb = $_POST['suburb'];
+                print_r($suburb);
             }
             if (isset($_POST['rating'])) {
                 $rating = $_POST['rating'];
