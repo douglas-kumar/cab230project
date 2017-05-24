@@ -19,7 +19,7 @@
 
             $query1 = "SELECT * FROM items WHERE suburb = :suburb";
             $stmt = $database->prepare($query1);
-            $stmt->bindParams(":suburb", $suburb);
+            $stmt->bindParam(":suburb", $suburb);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
