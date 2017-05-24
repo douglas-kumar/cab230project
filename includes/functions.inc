@@ -105,15 +105,14 @@ function getParkName($park_name) {
 	
 }
 
-function validatePost($text) {
+function validatePost($text, $rating) {
 	global $database;
 	global $errors;
 	date_default_timezone_set("Australia/Brisbane");
 
 	
-	$memberId = 6;
-	$itemId = 0;
-	$rating = 3;
+	$memberId = $_SESSION['user'];
+	$itemId = 1;//$_GET['itemId'];
 	$dateTime = date("Y-m-d H:i:s");
 	
 	//Change to INSERT INTO
@@ -129,10 +128,10 @@ function validatePost($text) {
 	
 	$stmt->execute();
 				
-	if ($stmt->rowCount() > 0) {
+	if ($stmt->rowCount() > 0 && (strlen($text) > 20 && strlen($text) < 200)) {
 		return true;
     } else {
-		error_messages($errors, "Cannot validate review, please make sure it's under 100 characters and not empty");
+		error_messages($errors, "Please make sure your review is between 20 and 200 characters");
 		return false;
 	}
 	
@@ -156,10 +155,14 @@ function getReviews() {
 	global $database;
 	global $errors;
 	
-	$query = "SELECT * FROM reviews; //M.firstName, R.* FROM reviews AS R INNER JOIN members AS M ON M.id = R.memberId";
+	//$itemId = $_GET['itemId'];
+	$itemId = 1;
+						
+	$query = "SELECT  M.firstName, R.rating, R.text, R.dateTime FROM reviews AS R INNER JOIN members AS M ON R.memberId = M.id WHERE itemId = :itemId";
 	$stmt = $database->prepare($query);
+	$stmt->bindParam(':itemId', $itemId);
 	$stmt->execute();
-	
+						
 	if ($stmt->rowCount() > 0) {
 		return $stmt->fetchAll();
 	} else {
