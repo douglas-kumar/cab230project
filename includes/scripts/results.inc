@@ -4,22 +4,36 @@
         global $errors;
         global $database;
 
+        $query = "items";
+
         try {
 
-            //Collect search criteria
-            if (isset($_POST['name'])) {
-                $name = $_POST['name'];
+            if () {
+
+            } else if () {
+
+            } else if () {
+
+            } else {
+                
             }
+
+            //Collect search criteria
             if (isset($_POST['suburb'])) {
                 $suburb = $_POST['suburb'];
-                print_r($suburb);
+                $query = "SELECT * FROM items WHERE suburb = :suburb";
+                print_r($query);
+            }
+            if (isset($_POST['name'])) {
+                $name = strtoupper($_POST['name']);
+                $query = "SELECT * FROM (" . $query . ") WHERE name LIKE '%" . $name . "%'";
+                print_r($query);
             }
             if (isset($_POST['rating'])) {
                 $rating = $_POST['rating'];
             }
 
-            $query1 = "SELECT * FROM items WHERE suburb = :suburb";
-            $stmt = $database->prepare($query1);
+            $stmt = $database->prepare($query);
             $stmt->bindParam(":suburb", $suburb);
             $stmt->execute();
 

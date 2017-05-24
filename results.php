@@ -1,7 +1,7 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 <?php require './includes/scripts/results.inc' ?>
 <?php
-	if (!isset($_POST['suburb'])) {
+	if (!isset($_POST['submit'])) {
 		$results = 0;
 	}
 ?>
