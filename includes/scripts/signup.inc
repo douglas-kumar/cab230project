@@ -62,11 +62,7 @@
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-
-                    $_SESSION['loggedIn'] = true;
-
-                    // Redirect to index.php
-                    header("location: http://localhost/cab230project/index.php");
+                    require 'login.inc';
                 }
             } else {
                 print_r($errors);

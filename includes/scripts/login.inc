@@ -4,7 +4,7 @@
     if (isset($_POST['submit'])) {
         try {
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = $_POST['pwd'];
             $results = get_salt($email);
             $password = sha1($password . $results['salt']);
 

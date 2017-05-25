@@ -7,10 +7,33 @@ echo $parkName['name'];
 ?></h2>
 <form action="park.php" method="post">
 <div id="parkrating">
-    <img src="public/images/star.png">
-    <img src="public/images/star.png">
-    <img src="public/images/star.png">
-    <img src="public/images/star.png">
+    <?php
+		global $database;
+		global $errors;
+		try {
+			$query = "SELECT AVG(rating) AS rat FROM reviews GROUP BY itemId HAVING itemId = :itemId";
+			$stmt = $database->prepare($query);
+			$stmt->bindParam(":itemId", $parkName['id']);
+			$stmt->execute();
+
+			if ($stmt->rowCount() > 0) {
+				$avgRat = $stmt->fetch();
+				$numStars = floor($avgRat['rat']);
+			} else {
+				$numStars = 0;
+			}
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
+
+		if ($numStars != 0) {
+			for ($stars = 0; $stars < $numStars; $stars++) {
+				echo "<img src=\"public/images/star.png\" />";
+			}
+		} else {
+			echo "<i>No ratings</i>";
+		}
+	?>
 </div>
 
 <div id="otherinfo">
