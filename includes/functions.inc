@@ -240,7 +240,7 @@ function login($email, $password) {
 
 function enforceLogin() {
 	if (!$_SESSION['loggedIn']) {
-		header("location: http://{$_SERVER['HTTP_HOST']}/cab230project/login.php");
+		header("location: http://{$_SERVER['HTTP_HOST']}/cab230project-master/login.php");
 		}
 }
 

@@ -15,7 +15,7 @@
 				// Get newly created account ID
              //  $reviewId = $database->lastInsertId();
                 // Redirect to index.php
-				header("location: http://<?= {$_SERVER['HTTP_HOST']} ?>/cab230project/index.php");
+				header("location: http://<?= {$_SERVER['HTTP_HOST']} ?>/cab230project-master/index.php");
 			} else {
 				print_r($errors);
 			}
