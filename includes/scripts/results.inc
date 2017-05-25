@@ -48,7 +48,7 @@
 
             } else {
 
-                $query = "SELECT * FROM items LIMIT 50;";
+                $query = "SELECT I.*, AVG(R.rating) AS rat FROM items AS I INNER JOIN reviews AS R ON I.id = R.itemId GROUP BY R.itemId, I.name, I.parkCode, I.street, I.suburb, I.easting, I.northing, I.latitude, I.longitude ORDER BY rat DESC LIMIT 50;";
                 
             }
 
