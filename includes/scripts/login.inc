@@ -21,7 +21,7 @@
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['user'] = $userId['id'];
 				$_SESSION['userName'] = $userId['firstName'];
-                header("location: http://localhost/cab230project/index.php");
+                header("location: http://<?= {$_SERVER['HTTP_HOST']} ?>/cab230project/index.php");
             } else {
                 print_r($errors);
             }

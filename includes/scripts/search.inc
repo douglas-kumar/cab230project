@@ -9,7 +9,7 @@ global $errors;
 
 			if ($results == $name) {
 				// TO DO:
-				header("location: http://localhost/cab230project/index.php");
+				header("location: http://<?= {$_SERVER['HTTP_HOST']} ?>/cab230project/index.php");
 			} else {
 				print_r($errors);
 			}
