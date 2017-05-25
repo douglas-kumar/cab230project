@@ -20,7 +20,7 @@
 
             if (!empty($_POST['name']) && !empty($_POST['suburb']) && !empty($_POST['rating'])) {
 
-                $query = "SELECT I.*, AVG(R.rating) AS rat FROM items AS I INNER JOIN reviews AS R ON R.itemId = I.id GROUP BY R.itemId, I.name, I.parkCode, I.street, I.suburb, I.easting, I.northing, I.latitude, I.longitude HAVING rat >" . $rating . "AND suburb =" . $suburb . "AND name LIKE '%" . $name . "%'";
+                $query = "SELECT I.*, AVG(R.rating) AS rat FROM items AS I INNER JOIN reviews AS R ON R.itemId = I.id GROUP BY R.itemId, I.name, I.parkCode, I.street, I.suburb, I.easting, I.northing, I.latitude, I.longitude HAVING rat >" . $rating . "AND suburb = '" . $suburb . "' AND name LIKE '%" . $name . "%'";
 
             } else if (!empty($_POST['name']) && !empty($_POST['suburb'])) {
 
@@ -32,7 +32,7 @@
 
             } else if (!empty($_POST['suburb']) && !empty($_POST['rating'])) {
 
-                $query = "SELECT I.*, AVG(R.rating) AS rat FROM items AS I INNER JOIN reviews AS R ON R.itemId = I.id GROUP BY R.itemId, I.name, I.parkCode, I.street, I.suburb, I.easting, I.northing, I.latitude, I.longitude HAVING rat >" . $rating . "AND suburb =" . $suburb;
+                $query = "SELECT I.*, AVG(R.rating) AS rat FROM items AS I INNER JOIN reviews AS R ON R.itemId = I.id GROUP BY R.itemId, I.name, I.parkCode, I.street, I.suburb, I.easting, I.northing, I.latitude, I.longitude HAVING rat >" . $rating . "AND suburb = '" . $suburb . "'";
                 
             } else if (!empty($_POST['name'])) {
 
