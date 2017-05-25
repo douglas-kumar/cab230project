@@ -11,6 +11,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+td a {
+    display: block;
+}
+
 input[type=button], input[type=submit] {
     border-radius: 10px;
     background-color: lightgrey;
