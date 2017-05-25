@@ -11,13 +11,9 @@
 			$rating = $_POST['rating'];
 			$text = $_POST['text'];
 			
-			if (validatePost($text, $rating) == true) {
-				// Get newly created account ID
-             //  $reviewId = $database->lastInsertId();
-                // Redirect to index.php
-				header("location: http://localhost/cab230project/index.php");
-			} else {
-				print_r($errors);
+			if (submitPost($text, $rating) == true) {
+                // Redirect to same page
+				header("location: http://fastapps04.qut.edu.au:8080/n9716751/cab230project-master/park.php?itemId=$itemId");
 			}
 		} catch (PDOException $e) {
 			die($e->getMessage());

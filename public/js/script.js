@@ -104,7 +104,7 @@ function ValidLogin(form) {
 }
 
 function openReview() {
-	document.getElementById("reviewwrite").innerHTML = '<form action="includes/scripts/post.inc" method="post"><textarea name="text" minlength="1" maxlength="100" rows="3" placeholder="Your review..."></textarea><input type="range" name="rating" min="1" max="5"><br /><input type="submit" name="submit" value="Post"></form>';
+	document.getElementById("reviewwrite").innerHTML = '<textarea name="text" minlength="20" maxlength="200" rows="5" placeholder="Your review..."></textarea><input type="range" name="rating" min="1" max="5"><br /><input type="submit" name="submit" value="Post"></form>';
 	document.getElementById("writebutton").remove();
 }
 

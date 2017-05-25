@@ -98,39 +98,43 @@ function getPark($itemId) {
 	$stmt->execute();
 	
 	if ($stmt->rowCount() > 0) {
-			return $stmt->fetch();
+		return $stmt->fetch();
 	} else {
-			return $error_messages($errors, "Invalid park name");
+		error_messages($errors, "Invalid park name");
 	}	
 }
 
-function validatePost($text, $rating) {
+function submitPost($text, $rating) {
 	global $database;
 	global $errors;
 	date_default_timezone_set("Australia/Brisbane");
+	
+	if ((strlen($text) >= 20) && (strlen($text) <= 200)) {
 
 	
-	$memberId = $_SESSION['user'];
-	$itemId = $_SESSION['itemId'];
-	$dateTime = date("Y-m-d H:i:s");
-	
-	$query = "REPLACE reviews (memberId, itemId, rating, text, dateTime) VALUES (:memberId, :itemId, :rating, :text, :dateTime)";
-	
-	$stmt = $database->prepare($query);
-				
-	$stmt->bindParam(':memberId', $memberId);
-	$stmt->bindParam(':itemId', $itemId);
-	$stmt->bindParam(':rating', $rating);
-	$stmt->bindParam(':text', $text);
-	$stmt->bindParam(':dateTime', $dateTime);
-	
-	$stmt->execute();
-				
-	if ($stmt->rowCount() > 0 && (strlen($text) > 20 && strlen($text) < 200)) {
-		return true;
-    } else {
+		$memberId = $_SESSION['user'];
+		$itemId = $_SESSION['itemId'];
+		$dateTime = date("Y-m-d H:i:s");
+		
+		$query = "REPLACE reviews (memberId, itemId, rating, text, dateTime) VALUES (:memberId, :itemId, :rating, :text, :dateTime)";
+		
+		$stmt = $database->prepare($query);
+					
+		$stmt->bindParam(':memberId', $memberId);
+		$stmt->bindParam(':itemId', $itemId);
+		$stmt->bindParam(':rating', $rating);
+		$stmt->bindParam(':text', $text);
+		$stmt->bindParam(':dateTime', $dateTime);
+		
+		$stmt->execute();
+					
+		if ($stmt->rowCount() > 0) {
+			return true;
+		}
+		
+	} else {
 		error_messages($errors, "Please make sure your review is between 20 and 200 characters");
-		return false;
+		print_r($errors);
 	}
 	
 }
@@ -153,7 +157,7 @@ function getReviews() {
 	global $database;
 	global $errors;
 	
-	$itemId = $_GET['itemId'];
+	$itemId = $_SESSION['itemId'];
 						
 	$query = "SELECT  M.firstName, R.rating, R.text, R.dateTime FROM reviews AS R INNER JOIN members AS M ON R.memberId = M.id WHERE itemId = :itemId";
 	$stmt = $database->prepare($query);
@@ -240,7 +244,7 @@ function login($email, $password) {
 
 function enforceLogin() {
 	if (!$_SESSION['loggedIn']) {
-		header("location: http://{$_SERVER['HTTP_HOST']}/cab230project/login.php");
+		header("location: http://fastapps04.qut.edu.au:8080/n9716751/cab230project-master/login.php");
 		}
 }
 

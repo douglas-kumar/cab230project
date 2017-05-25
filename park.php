@@ -1,15 +1,18 @@
-﻿<?php require './includes/partials/header.inc' ?>
-<?php require './includes/scripts/post.inc' ?>
-<?php $_SESSION['itemId'] = $_GET['itemId']; ?>
+﻿<?php require './includes/partials/header.inc'; ?>
+<?php require './includes/scripts/post.inc'; ?>
+<?php 
+	global $database;
+	global $errors;
+	$_SESSION['itemId'] = $_GET['itemId'];
+?>
 <h2 id="parktitle" itemscope itemprop="name" itemtype="http://schema.org/Places" ><?php 
-$parkName = getPark($_GET['itemId']); 
+$parkName = getPark($_SESSION['itemId']); 
 echo $parkName['name'];
-?></h2>
+?>
+</h2>
 <form action="park.php" method="post">
 <div id="parkrating">
     <?php
-		global $database;
-		global $errors;
 		try {
 			$query = "SELECT AVG(rating) AS rat FROM reviews GROUP BY itemId HAVING itemId = :itemId";
 			$stmt = $database->prepare($query);
