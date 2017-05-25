@@ -9,7 +9,7 @@ global $errors;
 
 			if ($results == $name) {
 				// TO DO:
-				header("location: http://<?= {$_SERVER['HTTP_HOST']} ?>/cab230project-master/index.php");
+				header("location: http://fastapps04.qut.edu.au:8080/n9716751/cab230project-master/index.php");
 			} else {
 				print_r($errors);
 			}

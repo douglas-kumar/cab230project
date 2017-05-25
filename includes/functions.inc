@@ -240,7 +240,7 @@ function login($email, $password) {
 
 function enforceLogin() {
 	if (!$_SESSION['loggedIn']) {
-		header("location: http://{$_SERVER['HTTP_HOST']}/cab230project-master/login.php");
+		header("location: http://fastapps04.qut.edu.au:8080/n9716751/cab230project-master/login.php");
 		}
 }
 
