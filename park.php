@@ -1,7 +1,7 @@
 ﻿<?php require './includes/partials/header.inc' ?>
 <?php require './includes/scripts/post.inc' ?>
 <?php $_SESSION['itemId'] = $_GET['itemId']; ?>
-<h2 id="parktitle"><?php 
+<h2 id="parktitle" itemscope itemprop="name" itemtype="http://schema.org/Places" ><?php 
 $parkName = getPark($_GET['itemId']); 
 echo $parkName['name'];
 ?></h2>
@@ -18,18 +18,9 @@ echo $parkName['name'];
         <h4>
             Reviews &nbsp
         </h4>
-
-        <div class="review">
+<!-- check syntax of itemReviewed -->
+        <div class="review" itemscope itemtype="http://schema.org/Reviews" itemReviewed >
             <p>
-			<!-- REMOVE - Sample review
-                <img src="public/images/star.png">
-                <img src="public/images/star.png">
-                <img src="public/images/star.png">
-                <img src="public/images/star.png">
-                <img src="public/images/star.png"> &nbspDavid - <q>Great Park, prime spot for a barbecue or party
-                        and the kids love it!</q>
-						<br /><br /><br />
-						-->
 						<?php
 						global $database;
 						global $errors;
@@ -59,7 +50,7 @@ echo $parkName['name'];
 									<img src="public/images/star.png">
 									<img src="public/images/star.png">
 							    <?php	}
-								echo "{$review['firstName']}" . " - " . "<q>{$review['text']}</q> " . "</p>";
+								echo "{$review['firstName']}" . " - " . "<q itemprop=\"description\">{$review['text']}</q> " . "<i id=\"postDate\" itemprop=\"date\">Posted {$review['dateTime']}</i>" . "</p>";
 							}
 						} else {
 							echo "<br />no reviews have been written";

@@ -329,3 +329,8 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+#postDate {
+	font-size: 14px;
+	color: grey;
+}
