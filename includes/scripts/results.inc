@@ -24,7 +24,7 @@
 
             } else if (!empty($_POST['name']) && !empty($_POST['suburb'])) {
 
-                $query = "SELECT * FROM items WHERE suburb = :suburb AND name LIKE '%" . $name . "%'";
+                $query = "SELECT * FROM items WHERE suburb = '" . $suburb . "' AND name LIKE '%" . $name . "%'";
 
             } else if (!empty($_POST['name']) && !empty($_POST['rating'])) {
 
@@ -40,7 +40,7 @@
 
             } else if (!empty($_POST['suburb'])) {
 
-                $query = "SELECT * FROM items WHERE suburb =" . $suburb;
+                $query = "SELECT * FROM items WHERE suburb = '" . $suburb . "'";
 
             } else if (!empty($_POST['rating'])) {
 
