@@ -11,7 +11,6 @@
 			$rating = $_POST['rating'];
 			$text = $_POST['text'];
 			
-<<<<<<< HEAD
 			if (submitPost($text, $rating) == true) {
                 // Redirect to same page
 				header("location: http://fastapps04.qut.edu.au:8080/n9716751/cab230project-master/park.php?itemId=$itemId");
