@@ -6,13 +6,13 @@
         try {
 
             // Collect input values
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
+            $firstname = trim($_POST['firstname']);
+            $lastname = trim($_POST['lastname']);
 			$dob = $_POST['dob'];
-            $email = $_POST['email'];
-			$address = $_POST['address'];
+            $email = trim($_POST['email']);
+			$address = trim($_POST['address']);
 			$state = $_POST['state'];
-			$postcode = $_POST['postcode'];
+			$postcode = trim($_POST['postcode']);
             if (isset($_POST['cor']) && $_POST['cor'] == 'on') {
 			    $cor = 1;
             } else {
@@ -36,14 +36,13 @@
                 $saltHash = md5(uniqid());
                 $salt = substr($saltHash, 0, 20);
 
-                // Concat salt to password and hash using sha1
+                // Concat salt to password and hash
                 $password =  sha1($password . $salt);
 
-                // Create and prepare query
+                // Create and prepare query to add member to db
                 $query = "INSERT INTO members (firstName, lastName, DOB, email, address, state, postcode, correspondence, password, salt)
                 VALUES (:firstname, :lastname, :dob, :email, :address, :state, :postcode, :correspondence, :password, :salt)";
 
-                // Prepare the statement to prevent SQL injections
                 $stmt = $database->prepare($query);
 
                 // Bind parameters
@@ -61,11 +60,16 @@
                 // Execute the query
                 $stmt->execute();
 
+                // Log the user in immediately
                 if ($stmt->rowCount() > 0) {
                     require 'login.inc';
                 }
             } else {
-                print_r($errors);
+                foreach($errors as $error) {
+                    print_r($error);
+                    echo "<br/>";
+                }
+                echo "<br />";
             }
         } catch (PDOException $e) {
             die($e->getMessage());

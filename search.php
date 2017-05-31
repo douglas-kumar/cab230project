@@ -1,16 +1,11 @@
-﻿<?php require './includes/partials/header.inc' ?>
-<?php require './includes/scripts/search.inc' ?>
+<?php require './includes/partials/header.inc' ?>
 
 <h2>Search</h2>
 <div id="wholeSearchField">
-    <!-- div to wrap the whole search field -->
 
-    <form method="POST" action="results.php">
-        <!-- Need to fix (links to sample_results page) -->
+    <form id="searchForm" name="search" method="POST" action="results.php">
 	
         <h4>Name</h4>
-		<!--need to insert proper thing - just code
-				-->
         <div class="searchitem">
             <input type="text" id="searchtext" name="name" placeholder="Search by name..." />
         </div>
@@ -18,17 +13,19 @@
         <h4>Suburb</h4>
         <div class="searchitem">
             <select name="suburb">
-                <option value="" disabled selected>Select suburb...</option>
+                <option value="" selected>Select suburb...</option>
 				<?php
 				global $errors;
 				global $database;
 				
+				// Retrieves suburbs without duplicates and prepares query for injections
 				$query = "SELECT DISTINCT suburb FROM items ORDER BY suburb";
 				$stmt = $database->prepare($query);
 				$stmt->execute();
 				
 				$suburbs = $stmt->fetchAll();
 				
+				// Cycles through each suburb and displays it as drop down options
 				foreach ($suburbs as $suburbName) {
 					echo "<option value=\"{$suburbName['suburb']}\">{$suburbName['suburb']}</option>";
 				}
@@ -39,50 +36,40 @@
         <div class="searchitem">
             <div>
                 <input type="radio" name="rating" value="5" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" /><br />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" /><br />
                 <input type="radio" name="rating" value="4" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" /><br />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" /><br />
                 <input type="radio" name="rating" value="3" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" /><br />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" /><br />
                 <input type="radio" name="rating" value="2" />
-                <img src="public/images/star.png" />
-                <img src="public/images/star.png" /><br />
+                <img src="public/images/star.png" alt="star.png" />
+                <img src="public/images/star.png" alt="star.png" /><br />
                 <input type="radio" name="rating" value="1" />
-                <img src="public/images/star.png" /><br />
+                <img src="public/images/star.png" alt="star.png" /><br />
+                <input type="radio" name="rating" value="" checked/><i>No rating</i>
             </div>
         </div>
         <h4>Location</h4>
-        <!-- CALUM: I need to fix the google maps to be real-time and add pins of map location -->
-        <div class="searchitem" onclick="getLocation()">
-            <input id="location" type="button" onclick="window.location.href='results.php'; alert('Searching for parks close by...')"
-                value="Search for parks near you" />
-            <!--alert('Searching for parks close by...')"-->
+        <div class="searchitem">
+            <button id="location" type="button" onclick="getLocation();">Search for parks near you</button>
 
-            <div id="googleMap1" hidden>
-            </div>
-            <div id="googleMap2" hidden>
-            </div>
-            <div id="googleMap3" hidden>
-            </div>
-            <br>
-
-            <p id="status">Click the button to get your coordinates.</p>
+            <p id="status">Click the button to get your location.</p>
         </div>
-        <!-- CALUM: ^^^ -->
-        <input id="searchBtn" name="submit" type="submit" value="Search" />
+        <input id="lat" type="text" name="lat" hidden />
+        <input id="long" type="text" name="long" hidden />
+        <input id="searchBtn" name="btnSubmit" type="submit" value="Search" />
 
     </form>
 
 </div>
-<!-- end of whole search field div -->
 
 <?php require './includes/partials/footer.inc' ?>

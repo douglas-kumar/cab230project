@@ -1,19 +1,5 @@
-/*document.getElementById('regform').addEventListener("submit", function (e) {
-	e.preventDefault(); // Prevents form from submitting
-	// TODO: Validate input then submit form if all is good
-	// document.getElementById("regform").submit();
-});*/
 
-function EnableSearchBtn() {
-	var textField = document.getElementById("searchtext").value;
-	var checkedBox = document.getElementsByName("rating").value;
-	if (textField != "" || checkedBox != "") {
-		document.getElementById("searchBtn").disabled = false;
-	} else {
-		document.getElementById("searchBtn").disabled = true;
-	}
-}
-
+// hides any errors that show when registering an account
 function hideError(element) {
 	document.getElementById(element).innerHTML = "";
 }
@@ -92,7 +78,6 @@ function ValidateRegistration(form) {
 	}
 }
 
-// Function needs to be properly implemented
 function ValidLogin(form) {
 	if (checkAddress(form) && checkPassword(form)) {
 		window.alert("Logging in...");
@@ -104,55 +89,31 @@ function ValidLogin(form) {
 }
 
 function openReview() {
-	document.getElementById("reviewwrite").innerHTML = '<textarea name="text" minlength="20" maxlength="200" rows="5" placeholder="Your review..."></textarea><input type="range" name="rating" min="1" max="5"><br /><input type="submit" name="submit" value="Post"></form>';
+	document.getElementById("reviewwrite").innerHTML = '<textarea name="text" minlength="20" maxlength="200" rows="5" placeholder="Your review..."></textarea><br /><label id="ratingLbl">Rating:</label><div id="ratingVal"><input type="range" name="rating" min="1" max="5"><div id="r1">1*</div><div id="r2">2*</div><div id="r3">3*</div><div id="r4">4*</div><div id="r5">5*</div></div><br /><input type="submit" name="submit" value="Post"/>';
 	document.getElementById("writebutton").remove();
 }
 
-function myMap() {
-  var mapOptions1 = {
-    center: new google.maps.LatLng(51.508742,-0.120850),
-    zoom: 9 ,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var mapOptions2 = {
-    center: new google.maps.LatLng(-27.36,153.0387),
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var mapOptions3 = {
-    center: new google.maps.LatLng(-27.3791,153.0387),
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map1 = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
-  var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
-  var map3 = new google.maps.Map(document.getElementById("googleMap3"),mapOptions3);
-}
-
 //   Geo Location
-
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
+		document.getElementById("status").innerHTML = "Locating, please wait...";
 	} else {
 		document.getElementById("status").innerHTML = "Geolocation is not supported by this browser.";
 	}
-	/*var showMap = document.getElementById("googleMap1");
-	showMap.style.visibility = "visible";
-	showMap.style.width = "100%";
-	showMap.style.height = "400px";*/
 }
 
 function showPosition(position) {
-	document.getElementById("status").innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
-
-	// display on a map
-	var latlon = position.coords.latitude + "," + position.coords.longitude;
-	var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
-	document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
-
+	var lat = position.coords.latitude.toPrecision(9);
+	var long = position.coords.longitude.toPrecision(9);
+		
+	document.getElementById('lat').value = lat;
+	document.getElementById('long').value = long;
+	
+    document.getElementById('searchBtn').click();
 }
 
+// Function to throw an error if locational services are unavailable
 function showError(error) {
 	var msg = "";
 	switch (error.code) {
@@ -171,47 +132,3 @@ function showError(error) {
 	}
 	document.getElementById("status").innerHTML = msg;
 }
-
-// Related to multiple markers on the results pageX
-
-
-      var map;
-      var infowindow;
-
-      function initMap() {
-        var pyrmont = {lat: -33.867, lng: 151.195};
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: pyrmont,
-          radius: 500,
-          type: ['store']
-        }, callback);
-      }
-
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-        }
-      }
-
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }

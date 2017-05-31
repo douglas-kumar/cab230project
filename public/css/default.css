@@ -1,4 +1,6 @@
-﻿body {
+/*Overall page styling*/
+
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -7,36 +9,54 @@
     overflow-x: hidden;
 }
 
+/*Consistent font across the site*/
+
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-td a {
-    display: block;
+/*User first name display in top right corner*/
+
+#userName {
+    float: right;
+    padding-right: 15px;
+    margin-left: auto;
+    display: inline-block;
+    font-size: 18px;
 }
 
-input[type=button], input[type=submit] {
+/*Buttons that are used to submit forms*/
+
+input[type=button]:not([id="location"]), input[type=submit] {
     border-radius: 10px;
     background-color: lightgrey;
-    border: 1px solid black;
+    border:3px solid grey;
     transition: background-color .1s ease-in-out, color .1s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover {
+/*Transition for form buttons*/
+
+input[type=button]:hover:not([id="location"]), input[type=submit]:hover {
     color: white;
     background-color: #007160;
-    border: 1px solid grey;
+    border: 3px solid grey;
 }
+
+/*Star rating on search form*/
 
 .searchitem img[src="public/images/star.png"] {
     width: 35px;
     height: 35px;
 }
 
+/*Star ratings in other places*/
+
 img[src="public/images/star.png"], th img[src="public/images/star.png"] {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
 }
+
+/* Container at top section of page */
 
 header {
 	padding-top: 5px;
@@ -46,16 +66,30 @@ header {
     color: white;
 	text-align: center;
     border-bottom: 5px solid grey;
+    display: flex;
+    flex-direction: column;
 }
+
+/*Foremost page headings*/
 
 h2 {
     text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
+
+/* For the navigation bar */
 
 nav {
     min-height: 40px;
-    padding-left: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 60%;
+    position: relative;
+    margin: auto;
 }
+
+    /*Links in the nav bar*/
 
     nav a {
         display: inline-block;
@@ -67,19 +101,43 @@ nav {
         color: white;
         transition: background-color .2s ease-in-out, color .2s ease-in-out;
     }
-
-        /*nav a[href="./signup.php"], nav a[href="./login.php"], nav a[href="logout.php"] {
-            float: right;
-        }*/
+    
+    /*Transition state for links in the nav bar*/
 
     nav a:hover {
         color: #007160;
         background-color: white;
     }
+   
+ /*Login/Signup/Logout buttons*/
+ 
+#userControl {
+	position: relative;
+	float: right;
+    display: block;
+    margin-right: 30px;
+}
+
+    /* Style for user control button links */
+
+    #userControl a {
+        border: none;
+    }
+    
+/* For links to the other pages (main pages) */
+    
+#pages {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+    float: left;
+}
+
+/* For main (white) section between header and footer */
 
 main {
     color: #4e4e4e;
-    width: 800px;
+    width: 60%;
     min-height: 800px;
     position: relative;
     margin: auto;
@@ -87,17 +145,42 @@ main {
     /*transform: translateX(-80%);*/
     padding: 20px 0;
     padding-left: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 75px;
+    padding-top: 75px;
 }
+
+/* Alter the stretch of main content according to browser dimensions */
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1245px) {
+    nav {
+      width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #userControl {
+        margin-right: 0;
+    }
+}
+
+/* Map for search results */
 
 #resultsmap {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    height: 300px;
+    height: 350px;
     border: 0;
 }
+
+/* Results table */
 
 table, table th {
     border: 3px solid #007160;
@@ -107,7 +190,10 @@ table td {
     border: 1px solid #007160;
 }
 
+/* Elements on the individual item page */
+
 #parktitle {
+	/*@type: "Name";*/
     display: inline-block;
 }
 
@@ -115,41 +201,34 @@ table td {
     width: 100%;
 }
 
-.parkimg {
-    width: 350px;
-    height: 250px;
-    float: left;
-    display: block;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    -ms-wrap-flow: maximum;
-}
-
 #parkimgdesc {
     display: inline;
     margin-bottom: 15px;
 }
 
-#otherinfo > div {
-    display: inline-block;
+#map, #reviews {
+    /*display: inline-block;*/
     padding: 5px 5px 5px 5px;
     margin: 5px;
-    width: 30%;
-    min-height: 300px;
+    width: 45%;
+    height: 550px;
     border: 2px solid #4e4e4e;
     float: left;
 }
 
-#otherinfo div h4 {
+#map h4, #reviews h4 {
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
 
 #parkrating {
+    display: inline;
     float: right;
     box-shadow: 2px 2px 2px #4e4e4e;
     padding: 3px;
-    margin-right: 20px;
+    margin-right: 8%;
     border-radius: 5px;
 }
 
@@ -158,11 +237,19 @@ table td {
     height: 30px;
 }
 
+#otherinfo #map {
+    /*width: 50%;*/
+}
+
+/* Button for opening review writer */
+
 #writebutton {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Review form elements */
 
 #reviewwrite input[type=submit] {
     margin-top: 5px;
@@ -185,21 +272,67 @@ table td {
 	display: block;
 }
 
-#parkmap {
-    width: 95%;
-    height: 225px;
-    border: 0;
+/* Numbers for identifying range bar values in review form */
+
+#r1, #r2, #r3, #r4, #r5 {
+    display: inline;
+    position: relative;
 }
 
-.searchitem  *:not(img){
+#r1 {
+    left: 5%;
+    float: left;
+}
+
+#r2 {
+    left:22.5%;
+    float: left;
+}
+
+#r3 {
+    right: 47.5%;
+    float: right;
+}
+
+#r4 {
+    right: 22.5%;
+    float: right;
+}
+
+#r5 {
+    right: 0;
+    float: right;
+}
+
+#parkmap {
+    width: 100%;
+    border: 0;
+    height: 475px;
+}
+
+/* Style for search form elements */
+
+.searchitem  *:not(img) {
     width: 65%;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
+.searchitem input[type=text], .searchitem select {
+    border: 1px solid black;
+}
+
 #location {
     font-size: 15px;
 }
+
+/* Review box */
+
+textarea {
+    resize: none;
+}
+
+/* Search button, sign up and login buttons */
 
 #searchBtn, #submitb {
     margin-top: 50px;
@@ -211,12 +344,16 @@ table td {
     font-size: 20px;
     font: bold;
 }
+
+/* Sign up input boxes */
 	
 input[type=text], input[type=date], input[type=password], input[type=email], select {
     padding: 12px 20px;
     box-sizing: border-box;
     font-size: 15px;
 }
+
+/* Sign up error boxes */
 
 .error {
     color: red;
@@ -234,6 +371,13 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
 
 }
 
+/* Sign up input element labels and other labels in site */
+
+label {
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
 #fnamelabel, #doblabel, #addresslabel, #postcodelabel, #pswdlabel, #doberror, #addresserror, #postcodeerror {
     display: inline-block;
     width: 45%;
@@ -245,12 +389,14 @@ input[type=text], input[type=date], input[type=password], input[type=email], sel
     width: 45%;
 }
 
+/* Sign up input elements */
+
 #fname, #dateofbirth, #addr, #pc, #pswd {
 	border: 1px solid black;
 	width: 45%;
     min-height: 45px;
     display: inline-block;
-    -ms-wrap-flow: maximum;
+    /*-ms-wrap-flow: maximum; -> Applies to IE*/ 
 }
 
 #lname, #emailad, #ste, #corres, #cpswd {
@@ -279,6 +425,8 @@ input[type=range] {
     height: 20px;
 }
 
+/* Site footer at bottom of all pages */
+
 footer {
     padding: 30px 30px;
     background-color: #007160;
@@ -288,6 +436,8 @@ footer {
     min-height: 100px;
     border-top: 5px solid grey;
 }
+
+/* Author details in footer */
 
 #cal {
     float: left;
@@ -299,21 +449,7 @@ footer {
     display: inline-block;
 }
 
-#googleMap1 {
-	visibility: hidden;
-	width: 0px;
-	height: 0px;
-}
-
-#googleMap2 {
-	width: 100%;
-	height: 400px;
-}
-
-#googleMap3 {
-	width: 100%;
-	height: 215px;
-}
+/* Results table */
 
 table {
     font-family: arial, sans-serif;
@@ -326,11 +462,114 @@ td, th {
     padding: 8px;
 }
 
+td a {
+    
+}
+
 tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-#postDate {
-	font-size: 14px;
-	color: grey;
+/* Review list */
+
+.review {
+	overflow-y: auto;
+	overflow-x: auto;
+	/*height: 450px;*/
+}
+
+#logindiv {
+	font-style: bold;
+}
+
+/* Rating slider */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 4px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #007160;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4.2px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #008b76;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #007160;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #00584a;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #007160;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  height: 8px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #007160;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #008b76;
+}
+
+#ratingNum {
+	display: relative;
+	word-spacing: 80px;
 }
